@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './views/MainPage';
 import Report from './views/Report';
@@ -6,8 +6,6 @@ import logo from './assets/logo.svg';
 import './App.scss';
 
 const App = () => {
-  const [recorded, setRecorded] = useState();
-
   return (
     <section className="main_sec">
       <nav>
