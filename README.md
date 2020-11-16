@@ -1,68 +1,110 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- PROJECT LOGO -->
+<p align="center">
+  <h2 align="center">UTIVA<h2>
+  <h4 align="center" style="color:purple">UTIVA<h4>
 
-## Available Scripts
+  <p align="center">
+    Utiva is a an online learning platform
+    <br />
+    <a href="https://github.com/ethesage/utivalmsmajor"><strong>Explore the Repo»</strong></a>
+    <br />
+    <br />
+  </p>
+</p>
 
-In the project directory, you can run:
 
-### `yarn start`
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* [Vision](#vision)
+  * [Built With](#built-with)
+* [API Spec](#api-spec)
+  * [Users](#users)
+* [API Endpoints](#api-endponts)
+  * [Login](#login)
+  * [Registration](#registration)
+* [License](#license)
+* [Authors](#authors)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<!-- ABOUT THE PROJECT -->
+## Vision
 
-### `yarn test`
+A community that helps organizations of all kinds to improve lives through learning
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Built With
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [Node](https://nodejs.org)
+* [Express](https://reactjs.org)
+* [Postgres](https://tailwindcss.com)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<!-- API SPEC -->
+## API Spec
+The preferred JSON object to be returned by the API should be structured as follows:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Users (for authentication)
 
-### `yarn eject`
+```source-json
+{
+  "user": {
+    "email": "johndoe@example.com",
+    "token": "session",
+    "username": "jake",
+    "bio": "i love my students",
+    "image": null
+  }
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<!-- API ENDPOINTS -->
+## API Endpoints
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Login:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+`POST /api/users/login`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Example request body:
 
-## Learn More
+```source-json
+{
+  "user":{
+    "email": "johndoe@example.com",
+    "password": "johnDoe12@"
+  }
+}
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+No authentication required, returns a User
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Required fields: `email`, `password`
 
-### Code Splitting
+### Registration:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+`POST /api/users`
 
-### Analyzing the Bundle Size
+Example request body:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```source-json
+{
+  "user":{
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "password": "johnDoe12@"
+  }
+}
+```
 
-### Making a Progressive Web App
+No authentication required, returns a User
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Required fields: `email`, `username`, `password`
 
-### Advanced Configuration
+## License
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Distributed under the MIT License. See `LICENSE` for more information.
 
-### Deployment
+<!-- AUTHORS -->
+### Authors
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+* [Jude chinoso (cvj)](https://github.com/cvjude)
+* [Amos Oruaroghene (amoskeyz)](https://github.com/amoskeyz) 
 
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
