@@ -66,7 +66,7 @@ app.use(express.static(path.join(__dirname, '../site/build')));
 app.use(
   session({
     store: new Pgstore(),
-    name: 'utiva',
+    name: 'ayjay',
     // Persisting your sessions change isProd to true if you want constant persistence
     saveUninitialized: false,
     resave: false,

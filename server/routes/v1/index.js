@@ -1,44 +1,15 @@
-import express from "express";
-import "express-async-errors";
-import user from "./user";
-import course from "./course";
-import trainer from "./trainer";
-import student from "./student";
-import classRoom from "./class";
-import file from "./file";
-import cohort from "./cohort";
-import assignment from "./assignment";
-import admin from "./admin";
-import checkout from "./checkout";
-import helpers from "../../helpers";
+import express from 'express';
+import helpers from '../helpers';
+import email from './email';
 
-const { errorStat, successStat } = helpers;
+const { successStat } = helpers;
+const router = express();
 
-const router = express.Router();
-
-router.get("/logout", async (req, res) => {
-  await req.session.logout(res);
-  successStat(res, 200, "message", "successfully logout");
+router.get('/', (req, res) => {
+  const role = req.session.getRole();
+  successStat(res, 200, 'message', `Welcome back ${role}`);
 });
 
-router.get("/logged-in", async (req, res) => {
-  try {
-    await req.session.isLoggedIn(req, res);
-  } catch (err) {
-    return errorStat(res, 401, err.message);
-  }
-  successStat(res, 200, "message", "logged in");
-});
-
-router.use("/user", user);
-router.use("/course", course);
-router.use("/trainer", trainer);
-router.use("/student", student);
-router.use("/class", classRoom);
-router.use("/file", file);
-router.use("/cohort", cohort);
-router.use("/assignment", assignment);
-router.use("/admin", admin);
-router.use("/checkout", checkout);
+router.use('/email', email);
 
 export default router;

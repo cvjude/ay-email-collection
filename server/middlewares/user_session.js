@@ -60,7 +60,7 @@ module.exports.main = function easySessionMain(connect, opts) {
         const split = token.split('.');
         const clientToken = [split[0], split[1]].join('.');
         const [, , signature] = split;
-        res.cookie('uti_va', clientToken, {
+        res.cookie('ay_jay', clientToken, {
           maxAge: role === 'student' ? userTimeout : freshTimeout,
           sameSite: true,
           secure: false,
@@ -95,7 +95,7 @@ module.exports.main = function easySessionMain(connect, opts) {
    */
   Session.prototype.logout = async function logout(res, cb) {
     this.regenerate((err) => (err ? new Error(err) : cb));
-    res.cookie('uti_va', '', {
+    res.cookie('ay_jay', '', {
       maxAge: 0,
       sameSite: true,
       secure: false,
@@ -137,14 +137,14 @@ module.exports.main = function easySessionMain(connect, opts) {
       throw new Error('You are not logged in');
     }
 
-    const { uti_va } = req.cookies;
+    const { ay_jay } = req.cookies;
     const signature = req.session.accessload;
 
-    if (!uti_va || !signature) {
+    if (!ay_jay || !signature) {
       throw new Error('Not logged in');
     }
 
-    const token = [uti_va, signature].join('.');
+    const token = [ay_jay, signature].join('.');
 
     await verifyToken(token, async (err) => {
       if (err) {
@@ -152,7 +152,7 @@ module.exports.main = function easySessionMain(connect, opts) {
       }
     });
 
-    res.cookie('uti_va', uti_va, {
+    res.cookie('ay_jay', ay_jay, {
       maxAge: this.getRole() === 'student' ? userTimeout : freshTimeout,
       sameSite: true,
       secure: false,
