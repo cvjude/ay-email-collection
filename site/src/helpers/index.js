@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const patterns = {
   email: /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:]|])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:)+)\])/,
-  fullName: /([^\n]{2,}) ([^\n]{2,}) ([^\n]{2,})/,
+  fullName: /[^\n]+/,
   phoneNumber: /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s./0-9]*$/,
 };
 
@@ -16,7 +16,7 @@ export const validateInput = (event) =>
 
 export const baseurl =
   process.env.NODE_ENV === 'development'
-    ? 'http://localhost:4000'
+    ? 'http://localhost:8000'
     : 'https://ayodelejayne.herokuapp.com/';
 
 export const axiosInstance = axios.create({

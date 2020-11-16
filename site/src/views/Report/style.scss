@@ -1,0 +1,91 @@
+.reports {
+  align-items: flex-start !important;
+  width: 90%;
+  margin: 50px auto 0;
+
+  .report_sec {
+    flex-grow: 1;
+    width: 100%;
+    background: white;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 10px;
+    padding: 20px;
+
+    .flx {
+      margin: 20px 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .icons {
+        display: flex;
+
+        .md-x {
+          cursor: pointer;
+        }
+
+        svg {
+          width: 35px;
+          height: 35px;
+          margin-left: 10px;
+        }
+
+        path {
+          fill: rgb(230, 88, 112);
+        }
+      }
+    }
+
+    th,
+    td {
+      &:nth-child(1) {
+        width: 10%;
+      }
+
+      &:nth-child(2) {
+        width: 15%;
+      }
+
+      &:nth-child(3) {
+        width: 20%;
+      }
+    }
+  }
+
+  tbody {
+    display: block;
+    max-height: 600px;
+    overflow: auto;
+  }
+
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    /* even columns width , fix width of table too*/
+  }
+
+  .chart_card {
+    padding: 0;
+    width: 100%;
+    flex-grow: 1;
+    min-height: 500px;
+
+    .chart_sec {
+      display: contents;
+    }
+  }
+
+  .g_tbl {
+    width: 100%;
+
+    table {
+      min-width: 0;
+    }
+  }
+}

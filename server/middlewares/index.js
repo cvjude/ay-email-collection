@@ -7,4 +7,5 @@ import { isLoggedIn } from './auth';
 export default {
   usession,
   createUser,
+  validate,
 };

@@ -1,14 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import useInput from '../../Hooks/useInput';
 import data from '../../data';
 import Input from '../Input';
+import { axiosInstance } from '../../helpers';
 import './style.scss';
 
-const AddTodo = () => {
+const AddTodo = ({ setRecorded }) => {
   const submitButton = useRef();
   const { addToast } = useToasts();
-  const [recorded, setRecorded] = useState();
+
+  useEffect(() => {
+    console.log(submitButton.current.children[0]);
+  });
 
   const [handleSubmit, handleChange, inputTypes, validateSelf] = useInput({
     inputs: data,
@@ -16,9 +20,11 @@ const AddTodo = () => {
     initials: {},
     btnText: {
       loading: 'Submitting...',
-      reg: 'SUbmit',
+      reg: 'Submit',
     },
     cb: async (inputs) => {
+      await axiosInstance.post('/email', inputs);
+
       addToast('Successfully Recorded', {
         appearance: 'success',
         autoDismiss: true,
@@ -27,6 +33,8 @@ const AddTodo = () => {
       submitButton.current.children[0].innerHTML = 'Submit';
       submitButton.current.disabled = false;
       submitButton.current.classList.remove('loader');
+
+      setRecorded(true);
     },
   });
 

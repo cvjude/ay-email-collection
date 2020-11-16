@@ -2,7 +2,7 @@ export default [
   {
     name: 'fullName',
     placeHolder: 'Full Name',
-    errorMsg: 'name should be greater than 2 letters',
+    errorMsg: 'name should be more than 2 letters',
     required: false,
   },
   {

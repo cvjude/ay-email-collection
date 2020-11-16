@@ -1,7 +1,4 @@
 import { v4 as uuid } from 'uuid';
-import helpers from '../../helpers';
-
-const { hashPassword } = helpers;
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
@@ -15,11 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       getterMethods: {
         uuid_slug() {
           return uuid();
-        },
-      },
-      hooks: {
-        beforeCreate: async (user) => {
-          user.password = await hashPassword(user.password);
         },
       },
     }

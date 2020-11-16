@@ -1,13 +1,13 @@
 import express from 'express';
 import 'express-async-errors';
-import middlewares from '../middlewares';
-import { email } from '../helpers/schema';
-import emailController from '../controllers/emailController';
+import middlewares from '../../middlewares';
+import { createNewUser, getUsers } from '../../controllers/emailController';
 
-const { validate } = middlewares;
+const { validate, createUser } = middlewares;
 
 const emailRoute = express();
 
-emailRoute.post('/', validate(email), emailController);
+emailRoute.post('/', validate(createUser), createNewUser);
+emailRoute.get('/', getUsers);
 
 export default emailRoute;

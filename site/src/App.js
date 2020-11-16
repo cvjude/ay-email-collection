@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
-import AddTodo from './components/AddTodo/';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import MainPage from './views/MainPage';
+import Report from './views/Report';
 import logo from './assets/logo.svg';
 import './App.scss';
 
 const App = () => {
+  const [recorded, setRecorded] = useState();
+
   return (
     <section className="main_sec">
       <nav>
@@ -11,20 +15,12 @@ const App = () => {
           <img src={logo} alt="logo" />
         </div>
       </nav>
-      <div className="container">
-        {/* <div className="img_sec">
-            <img src={ay} alt="Ayodelejayne" />
-          </div> */}
-        <div className="text_sec">
-          <div className="todo-list">
-            <h1 className="center blue-text">
-              Hello, thank you for wanting to know more. Please include your
-              contact details below so we can send the copy to your email.
-            </h1>
-            <AddTodo />
-          </div>
-        </div>
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={MainPage} />
+          <Route exact path="/view-all-reports-ay" component={Report} />
+        </Switch>
+      </Router>
 
       <div className="small">
         <small>powered by Jude chinoso</small>

@@ -1,18 +1,6 @@
 import { v2 as cloudinary } from 'cloudinary';
-import {
-  CLOUD_NAME,
-  API_KEY,
-  API_SECRET,
-  ENCRYPTION_SECRET,
-} from '../config/envVariables';
 
 const Cryptr = require('cryptr');
-
-cloudinary.config({
-  cloud_name: CLOUD_NAME,
-  api_key: API_KEY,
-  api_secret: API_SECRET,
-});
 
 /**
  * @Module UserController
@@ -75,31 +63,6 @@ export function validateJoi(object, schema, req, res, next, name) {
   return next();
 }
 
-export const uploadImage = (image, id) =>
-  new Promise((resolve, reject) => {
-    cloudinary.uploader.upload(image.path, { public_id: id }, (err, res) =>
-      (err ? reject(err) : resolve(res.url))
-    );
-  });
-
-export const encryptQuery = (string) => {
-  try {
-    const cryptr = new Cryptr(ENCRYPTION_SECRET);
-    const encryptedString = cryptr.encrypt(string);
-    return encryptedString;
-  } catch (error) {}
-};
-
-export const decrypt = (string) => {
-  try {
-    const cryptr = new Cryptr(ENCRYPTION_SECRET);
-    const decryptedString = cryptr.decrypt(string);
-    return decryptedString;
-  } catch (error) {
-    return false;
-  }
-};
-
 const shuffleArray = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -111,10 +74,10 @@ const shuffleArray = (array) => {
 };
 
 export const generatePassword = (passwordLength) => {
-  const numberChars = "0123456789";
-  const upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const lowerChars = "abcdefghijklmnopqrstuvwxyz";
-  const symbols = "!@#$%&*";
+  const numberChars = '0123456789';
+  const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
+  const symbols = '!@#$%&*';
 
   const allChars = numberChars + upperChars + lowerChars + symbols;
   let randPasswordArray = Array(passwordLength);
@@ -123,5 +86,7 @@ export const generatePassword = (passwordLength) => {
   randPasswordArray[2] = lowerChars;
   randPasswordArray[3] = symbols;
   randPasswordArray = randPasswordArray.fill(allChars, 4);
-  return shuffleArray(randPasswordArray.map((x) => x[Math.floor(Math.random() * x.length)])).join('');
+  return shuffleArray(
+    randPasswordArray.map((x) => x[Math.floor(Math.random() * x.length)])
+  ).join('');
 };

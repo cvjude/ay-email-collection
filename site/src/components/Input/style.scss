@@ -6,7 +6,7 @@ $distance: 0px;
 
 .input-div {
   height: 50px;
-  margin: 0 5px;
+  margin: 0 5px 5px;
 
   .input {
     position: relative;
@@ -51,8 +51,8 @@ $distance: 0px;
 
       &:focus {
         + .place-holder {
-          bottom: calc(70%);
-          font-size: 0.8em;
+          bottom: calc(60%);
+          font-size: 0.75em;
           + span {
             transform: scale(1);
           }
@@ -62,8 +62,8 @@ $distance: 0px;
 
     .typing {
       + .place-holder {
-        bottom: calc(70%);
-        font-size: 0.8em;
+        bottom: calc(60%);
+        font-size: 0.75em;
         + span {
           transform: scale(1);
         }
@@ -75,5 +75,7 @@ $distance: 0px;
     margin-top: 2px;
     font-size: 0.7em;
     color: orangered;
+    text-align: right;
+    width: 100%;
   }
 }
