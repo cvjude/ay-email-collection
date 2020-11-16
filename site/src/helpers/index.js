@@ -17,7 +17,7 @@ export const validateInput = (event) =>
 export const baseurl =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:8000'
-    : 'https://ayodelejayne.herokuapp.com/';
+    : 'https://ayodelejayne.herokuapp.com';
 
 export const axiosInstance = axios.create({
   baseURL: `${baseurl}/api/v1`,
