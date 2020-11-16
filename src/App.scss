@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Khula&display=swap');
+@import './media';
 
 *,
 *:before,
@@ -49,7 +50,26 @@ body {
   position: relative;
   width: 50%;
   height: 100%;
-  overflow: hidden;
+  // overflow: hidden;
+
+  @include for-size(tablet-landscape-up) {
+    width: 80%;
+  }
+
+  @include for-size(phone-only) {
+    width: 100%;
+    transform: translateY(5%);
+    height: 100%;
+
+    img {
+      object-fit: cover !important;
+      height: 100% !important;
+      object-position: top !important;
+      position: absolute;
+      top: -15%;
+      right: -15%;
+    }
+  }
 
   h3 {
     font-size: 6em;
@@ -70,6 +90,12 @@ body {
   width: 500px;
   position: absolute;
   left: 20%;
+
+  @include for-size(tablet-landscape-up) {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .todo-list {
