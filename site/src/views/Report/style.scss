@@ -13,6 +13,7 @@
     align-items: flex-start;
     justify-content: flex-start;
     border-radius: 10px;
+    box-shadow: 0 0 5px rgba(#000, 0.2);
     padding: 20px;
 
     .flx {
@@ -60,6 +61,7 @@
     display: block;
     max-height: 600px;
     overflow: auto;
+    min-width: 800px;
   }
 
   thead,
