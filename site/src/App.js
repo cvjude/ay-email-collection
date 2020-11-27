@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import MainPage from './views/MainPage';
 import Report from './views/Report';
 import logo from './assets/logo.svg';
+import Privacy from './views/PrivacyPolicy';
 import './App.scss';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={MainPage} />
           <Route exact path="/view-all-reports-ay" component={Report} />
+          <Route exact path="/privacy-policy" component={Privacy} />
         </Switch>
       </Router>
 
