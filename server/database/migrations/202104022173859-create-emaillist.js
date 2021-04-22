@@ -2,7 +2,7 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) =>
-    queryInterface.createTable('Users', {
+    queryInterface.createTable('EmailLists', {
       id: {
         allowNull: false,
         primaryKey: true,

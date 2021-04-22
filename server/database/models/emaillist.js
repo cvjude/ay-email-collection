@@ -1,8 +1,8 @@
 import { v4 as uuid } from 'uuid';
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'User',
+  const EmailList = sequelize.define(
+    'EmailList',
     {
       fullName: DataTypes.STRING,
       email: DataTypes.STRING,
@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  User.beforeCreate((user) => {
+  EmailList.beforeCreate((user) => {
     user.id = uuid();
   });
 
-  return User;
+  return EmailList;
 };

@@ -15,12 +15,12 @@ const { successStat } = helpers;
 export const createNewUser = async (req, res) => {
   const { email } = req.body.email;
 
-  let subscriber = await models.User.findOne({
+  let subscriber = await models.EmailList.findOne({
     where: { email },
   });
 
   if (!subscriber) {
-    subscriber = await models.User.create(req.body.email);
+    subscriber = await models.EmailList.create(req.body.email);
   }
   return successStat(res, 201, 'message', 'Subscribed');
 };
@@ -34,7 +34,7 @@ export const createNewUser = async (req, res) => {
  */
 
 export const getUsers = async (req, res) => {
-  let subscribers = await models.User.findAll();
+  const subscribers = await models.EmailList.findAll();
 
   return successStat(res, 201, 'data', subscribers);
 };
